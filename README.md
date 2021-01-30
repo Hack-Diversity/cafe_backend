@@ -1,4 +1,6 @@
-# Coffee Shop Community Library (CSCL) Database
+# Moose team test
+
+### Coffee Shop Community Library (CSCL) Database
 ## Getting Started
 This repository contains starter data for the CSCL Mini Project for the following database engines:
 - MongoDB (NoSQL)
@@ -9,9 +11,9 @@ This repository contains starter data for the CSCL Mini Project for the followin
 <br>
 
 ### Mongo
-[Install Mongo Server](https://docs.mongodb.com/manual/installation/)  
+[Install Mongo Server](https://docs.mongodb.com/manual/installation/)
 
-By default Mongo will not have access control enabled.  You will create users and grant permissions. 
+By default Mongo will not have access control enabled.  You will create users and grant permissions.
 Please refer to the Mongo [documentation](https://docs.mongodb.com/manual/tutorial/manage-users-and-roles/index.html).
 
 #### Importing the Database
@@ -39,8 +41,8 @@ There is a Mongo database that contains 2020 checkout historical data to use for
 #### Importing the Database
 You can find the CSCL SQL dump in `/mysql/cscl_db.sql`. There are many ways to import a MySQL database:
 
-[Using DBeaver](https://dbeaver.com/docs/wiki/Backup-Restore/)  
-[Using the Command Line](https://mariadb.com/kb/en/restoring-data-from-dump-files/)  
+[Using DBeaver](https://dbeaver.com/docs/wiki/Backup-Restore/)
+[Using the Command Line](https://mariadb.com/kb/en/restoring-data-from-dump-files/)
 
 ####For Data Science Fellows:
 Once you import the data using the methods above, you will find a table named `2020_CHECKOUT_DATA_TOP_HUNDRED_PER_WEEK`. This is where your historical data is found.
@@ -49,14 +51,14 @@ Once you import the data using the methods above, you will find a table named `2
 <br>
 
 ### PostgreSQL
-[Install PostgreSQL on Mac](https://www.postgresqltutorial.com/install-postgresql-macos/)  
-[Install PostgreSQL on Linux](https://www.postgresqltutorial.com/install-postgresql-linux/)  
-[Install PostgreSQL on Windows](https://www.postgresqltutorial.com/install-postgresql/)  
+[Install PostgreSQL on Mac](https://www.postgresqltutorial.com/install-postgresql-macos/)
+[Install PostgreSQL on Linux](https://www.postgresqltutorial.com/install-postgresql-linux/)
+[Install PostgreSQL on Windows](https://www.postgresqltutorial.com/install-postgresql/)
 
 #### Importing the Database
 You can find the CSCL SQL dump in `/postgres/cscl_db.sql`. There are many ways to import a PostgreSQL database:
 
-[Using DBeaver](https://dbeaver.com/docs/wiki/Backup-Restore/)  
+[Using DBeaver](https://dbeaver.com/docs/wiki/Backup-Restore/)
 [Using the Command Line](https://www.postgresqltutorial.com/postgresql-restore-database/)
 
 
