@@ -13,10 +13,7 @@ const booksRoute = require('./routes/books_route');
 const errorMessages = require('./lib/errors');
 
 //connect to mongoose database
-mongoose.connect(dbConfig, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(dbConfig);
 
 const app = express();
 
@@ -31,7 +28,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({
   extended: true
-}))
+}));
 // app.use(express.urlencoded({
 
 //API route
@@ -44,4 +41,4 @@ app.listen(port, () => {
   console.log("Port Connected to: " + port)
 });
 
-module.exports = app
+module.exports = app;
