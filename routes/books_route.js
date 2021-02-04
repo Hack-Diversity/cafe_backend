@@ -15,6 +15,6 @@ router.get('/books', (req, res, next) => {
     })
     .then(books => res.status(200).json({ books: books }))
     .catch(next)
-})
+});
 
 module.exports = router;
