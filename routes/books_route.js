@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 
 const Book = require('../models/book');
 
@@ -20,9 +21,9 @@ router.get('/books', (req, res, next) => {
 
 // CREATE
 // POST /surveys
-router.post('/books', (req, res, next) => {
+router.post('/create-books', (req, res, next) => {
   // set owner of new survey to be current user
-  const book = req.body.book
+  const book = req.body
 
   Survey.create(book)
     // respond to succesful `create` with status 201 and JSON of new "survey"
