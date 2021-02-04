@@ -4,7 +4,7 @@
   "description": "Back-End NoSQL database using MongoDB built on node.js and express.js that stores the data of a virtual library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Hack-Diversity/cafe_backend/issues"
   },
-  "homepage": "https://github.com/Hack-Diversity/cafe_backend#readme"
+  "homepage": "https://github.com/Hack-Diversity/cafe_backend#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
