@@ -1,8 +1,7 @@
 {
   "name": "cafe_backend",
   "version": "1.0.0",
-  "description": "Back-End NoSQL database using MongoDB built on node.js and
-  express.js that stores the data of a virtual library",
+  "description": "Back-End NoSQL database using MongoDB built on node.js and express.js that stores the data of a virtual library",
   "main": "index.js",
   "scripts": {
     "start": "node index"
