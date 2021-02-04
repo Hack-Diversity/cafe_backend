@@ -20,17 +20,22 @@ router.get('/books', (req, res, next) => {
 });
 //SHOW GET a book
 router.get('/books/:id', (req, res, next) => {
+  //requires the id of the resource to find it by id
   Book.findById(req.params.id)
+  //handles the error message
   .then(error404)
+  //if findById is successful, respond with code 200 OK
+  //make it look pretty with json
   .then(book => res.status(200).json({ book: book.toObject()}))
+  //if an error occours pass it to handler
   .catch(next)
 })
 
 // CREATE
 // POST /surveys
-app.post('/create-books', (req, res, next) => {
+router.post('/books', (req, res, next) => {
   // set owner of new survey to be current user
-  const book = req.body
+  const book = req.body.book
 
   Book.create(book)
     // respond to succesful `create` with status 201 and JSON of new "survey"
