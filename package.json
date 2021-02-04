@@ -1,0 +1,19 @@
+{
+  "name": "cafe_backend",
+  "version": "1.0.0",
+  "description": "Back-End NoSQL database using MongoDB built on node.js and express.js that stores the data of a virtual library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hack-Diversity/cafe_backend.git"
+  },
+  "author": "Patricia Antlitz for Hack.Diversity Moose Team 2021",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hack-Diversity/cafe_backend/issues"
+  },
+  "homepage": "https://github.com/Hack-Diversity/cafe_backend#readme"
+}
