@@ -3,8 +3,8 @@ const express = require('express');
 // const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const dbConfig = require('./mongo/database');
-// const bodyParser = require('body-parser');
+const dbConfig = require('./config/database');
+const bodyParser = require('body-parser');
 
 
 // import routes
@@ -13,26 +13,34 @@ const booksRoute = require('./routes/books_route');
 const errorMessages = require('./lib/errors');
 
 //connect to mongoose database
-mongoose.connect(dbConfig);
+mongoose.connect(dbConfig)
+
+// mongoose.connect("mongodb://localhost:27017/books", {useCreateIndex})
 
 const app = express();
 
-app.use(cors());
+const serverPort = 4741;
+const clientPort = 7165;
+
+app.use(cors({ origin: "https://hack-diversity.github.io" || `http://localhost:${clientDevPort}` }));
 
 // Create a port
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || serverPort;
 
 //assigns to variable app, app Init
 
-app.use(express.json());
-
-app.use(express.urlencoded({
+app.use(bodyParser.urlencoded({
   extended: true
 }));
-// app.use(express.urlencoded({
 
+app.use(bodyParser.json());
+
+// app.use(express.urlencoded({
+app.get('/', (req, res) => {
+  res.json({"message": "Test"})
+})
 //API route
-app.use('/books', booksRoute);
+app.use(booksRoute);
 
 app.use(errorMessages);
 
