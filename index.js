@@ -1,26 +1,47 @@
 //after installing express we need to require it ot use it
 const express = require('express');
-//const path = require('path');
+// const path = require('path');
 const mongoose = require('mongoose');
+const cors = require('cors');
+const dbConfig = require('./mongo/database');
+// const bodyParser = require('body-parser');
 
-mongoose.connect('mongodb://localhost/cafe_backend')
-let db = mongoose.connection;
-//assigns to variable app, app Init
-const app = express();
-//app get will get data on main page /, pass on function with params
-//required and response
-//home route
-app.get('/', (req, res) => {
-  //sends it to the browser
-  res.send("Hello");
-});
 
-app.get('/books/add', (req, res) => {
+// import routes
+const booksRoute = require('./routes/books_route');
+//import middleware files to handle errors
+const errorMessages = require('./lib/errors');
 
+//connect to mongoose database
+mongoose.connect(dbConfig, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 })
-//listens to port
-//navigate to localhost 3000
-// http://localhost:3000/
-app.listen(3000, function(){
-  console.log("server started on port 3000");
+
+const app = express();
+
+app.use(cors());
+
+// Create a port
+const port = process.env.PORT || 8080;
+
+//assigns to variable app, app Init
+
+app.use(express.json());
+
+app.use(express.urlencoded({
+  extended: true
+}))
+// app.use(express.urlencoded({
+
+//API route
+app.use('/books', booksRoute);
+
+app.use(errorMessages);
+
+
+app.listen(port, () => {
+  console.log("Port Connected to: " + port)
 });
+
+module.exports = app

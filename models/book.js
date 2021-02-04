@@ -12,14 +12,21 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  date: {
-    type: Date;
+  publication_year: {
+    type: String
   },
   isbn: {
     type: Number,
     required: true
   },
+  publisher: {
+    type: String
+  },
   copies: {
+    type: Number,
+    required: true
+  },
+  available: {
     type: Number,
     required: true
   },
