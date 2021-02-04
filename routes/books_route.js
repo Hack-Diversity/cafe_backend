@@ -21,7 +21,7 @@ router.get('/books', (req, res, next) => {
 
 // CREATE
 // POST /surveys
-router.post('/create-books', (req, res, next) => {
+app.post('/create-books', (req, res, next) => {
   // set owner of new survey to be current user
   const book = req.body
 
