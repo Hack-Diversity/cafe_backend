@@ -5,6 +5,8 @@ const Book = require('../models/book');
 
 const errors = require('../lib/custom_errors');
 
+const blanks = require("../lib/blanks")
+
 const error404 = errors.handle404;
 
 const router = express.Router();
@@ -34,9 +36,9 @@ router.get('/books/:id', (req, res, next) => {
 // CREATE
 // POST /surveys
 router.post('/books', (req, res, next) => {
-  // set owner of new survey to be current user
+  // require the entire body of the book schema
   const book = req.body.book
-
+  //create using variable book for the body
   Book.create(book)
     // respond to succesful `create` with status 201 and JSON of new "survey"
     .then(book => {
@@ -46,6 +48,29 @@ router.post('/books', (req, res, next) => {
     // the error handler needs the error message and the `res` object so that it
     // can send an error message back to the client
     .catch(next)
+})
+
+//UPDATE
+//PATCH to be used with id
+// router.patch('/books/:id', blanks, (req, res, next) => {
+//
+//   Book.findByIdAndUpdate(req.param.id)
+//   .then(error404)
+//   // .then(book => {
+//   //   return book.updateOne(req.body.book)
+//   // })
+//   .then(() => res.sendStatus(204))
+//   .catch(next)
+// })
+router.patch('/books/:id', (req, res, next) => {
+  Book.findByIdAndUpdate(req.params.id, {
+    $set: req.body.book
+}) .then(error404)
+  // .then(book => {
+  //   return book.updateOne(req.body.book)
+  // })
+  .then(() => res.sendStatus(204))
+  .catch(next)
 })
 
 
