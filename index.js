@@ -14,6 +14,7 @@ const bodyParser = require('body-parser');
 
 // import routes
 const booksRoute = require('./routes/books_route');
+const adminRoute = require('./routes/admin_route');
 //import middleware files to handle errors
 const errorMessages = require('./lib/errors');
 
@@ -48,6 +49,7 @@ app.get('/', (req, res) => {
 })
 //API route - calls and uses file routes/book_route
 app.use(booksRoute);
+app.use(adminRoute);
 //calls and uses file lib/errors.js
 app.use(errorMessages);
 
