@@ -73,5 +73,12 @@ router.patch('/books/:id', (req, res, next) => {
   .catch(next)
 })
 
+//DELETE
+router.delete('/books/:id', (req, res, next) => {
+  Book.findByIdAndRemove(req.params.id)
+  .then(error404)
+  .then(() => res.sendStatus(204))
+  .catch(next)
+})
 
 module.exports = router;
