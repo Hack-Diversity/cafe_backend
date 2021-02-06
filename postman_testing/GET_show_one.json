@@ -1,0 +1,17 @@
+{
+  "book": {
+    "_id": "601b67fddd482b28706d4057",
+    "isbn": 978394858593854,
+    "title": "Test PATCH",
+    "author": "Someone Special",
+    "publication_year": "2021",
+    "publisher": "None",
+    "image_url_s": "http://images.amazon.com/images/P/0195153448.01.THUMBZZZ.jpg",
+    "image_url_m": "http://images.amazon.com/images/P/0195153448.01.MZZZZZZZ.jpg",
+    "image_url_l": "http://images.amazon.com/images/P/0195153448.01.LZZZZZZZ.jpg",
+    "copies": 3,
+    "available": 1,
+    "updatedAt": "2021-02-06T08:29:01.660Z",
+    "rating": []
+  }
+}

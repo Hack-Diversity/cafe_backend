@@ -1,0 +1,17 @@
+{
+  "book": {
+    "_id":"601e542f8b803431d8148858",
+    "title":"Book to be deleted",
+    "author":"Someone Special",
+    "publication_year":"2021",
+    "isbn":978394858593854,
+    "publisher":"None",
+    "copies":3,
+    "available":1,
+    "rating":[],
+    "createdAt":
+    "2021-02-06T08:32:47.567Z",
+    "updatedAt":"2021-02-06T08:32:47.567Z",
+    "__v":0
+    }
+  }
