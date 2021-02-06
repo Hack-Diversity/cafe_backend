@@ -45,68 +45,6 @@ router.get('/books/:id', (req, res, next) => {
   // -PA
 })
 
-// CREATE
-// POST /surveys
-router.post('/books', (req, res, next) => {
-  // require the entire body of the book schema
-  const book = req.body.book
-  //create using variable book for the body
-  Book.create(book)
-    // respond to succesful `create` with status 201 and JSON of new "survey"
-    .then(book => {
-      res.status(201).json({ book: book.toObject() })
-    })
-    // if an error occurs, pass it off to our error handler
-    // the error handler needs the error message and the `res` object so that it
-    // can send an error message back to the client
-    .catch(next)
-})
-
-//UPDATE - not used
-//PATCH to be used with id
-// router.patch('/books/:id', blanks, (req, res, next) => {
-//
-//   Book.findByIdAndUpdate(req.param.id)
-//   .then(error404)
-//   // .then(book => {
-//   //   return book.updateOne(req.body.book)
-//   // })
-//   .then(() => res.sendStatus(204))
-//   .catch(next)
-// })
-
-// UPDATE - PATCH changes one entry by id
-router.patch('/books/:id', (req, res, next) => {
-  //mongoose findByIdAndUpdate selects the id of the instance
-  //and sets by requiring the body of the book
-  Book.findByIdAndUpdate(req.params.id, {
-    $set: req.body.book
-})
-//handle the error
-  .then(error404)
-  // .then(book => {
-  //   return book.updateOne(req.body.book)
-  // })\
-  //if successful return status 204
-  .then(() => res.sendStatus(204))
-  //if not, catch next
-  .catch(next)
-  // PA
-})
-
-//DELETE a book by ID
-router.delete('/books/:id', (req, res, next) => {
-  //uses the variable Book for the book.js Schema
-  //findByIdAndRemove Mongoose
-  Book.findByIdAndRemove(req.params.id)
-  //handle errors
-  .then(error404)
-  //if successful passes sucess status
-  .then(() => res.sendStatus(204))
-  //if not, error
-  .catch(next)
-  // PA
-})
 // exports this page
 //Pseudo and file code by PA
 module.exports = router;
