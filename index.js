@@ -22,7 +22,8 @@ const app = express();
 const serverPort = 4741;
 const clientPort = 7165;
 
-app.use(cors({ origin: "https://hack-diversity.github.io" || `http://localhost:${clientDevPort}` }));
+//app.use(cors({ origin: "https://hack-diversity.github.io" || `http://localhost:${clientDevPort}` }));
+app.use(cors({ origin: "http://localhost:8000" || `http://localhost:${clientDevPort}` }));
 
 // Create a port
 const port = process.env.PORT || serverPort;
