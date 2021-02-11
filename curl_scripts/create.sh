@@ -1,6 +1,6 @@
 #!/bin/bash
-
-API="http://localhost:8080"
+#curl script can be used to test CRUD in the terminal -PA
+API="http://localhost:4147"
 URL_PATH="/books"
 
 curl "${API}${URL_PATH}" \

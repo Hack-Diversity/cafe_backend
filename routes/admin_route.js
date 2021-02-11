@@ -9,42 +9,41 @@ const error404 = errors.handle404;
 //create express router and assign to a variable - PA
 const router = express.Router();
 
-//this page will allow CRUD (in this case READ ONLY) for all
-//users of the page, a separate page (route) will be created
-//for the administrator - PA
-
 //INDEX - GET all books
 //calls extension /books and passes params req, res and next -PA
-router.get('/books', (req, res, next) => {
+router.get('/admin', (req, res, next) => {
   //uses mongoose find() to find all entries on the database
   Book.find()
-    //.then(books => {
-     // return books.map(book => book.toObject())
-    //})
-    //.then(books => res.status(200).json({ books: books }))
-    //.catch(next)
-    .then(books => res.json(books))
-    .catch(err => res.status(400).json ('Error' + err));
+  //if successful, map the entries and turn into object
+    .then(books => {
+      return books.map(book => book.toObject())
+    })
+    //once an object return success code 200 and display
+    //as json
+    .then(books => res.status(200).json({ books: books }))
+    //if error next
+    .catch(next)
+    // -PA
 });
 
-//SHOW GET a book
-
-router.get('/books/:id', (req, res, next) => {
+//SHOW - GET a book by id
+router.get('/admin/:id', (req, res, next) => {
   //requires the id of the resource to find it by id
   //uses mongoose findById
   Book.findById(req.params.id)
   //handles the error message
-  //.then(error404)
+  .then(error404)
   //if findById is successful, respond with code 200 OK
   //make it look pretty with json
-  .then(book => res.json(book))
+  .then(book => res.status(200).json({ book: book.toObject()}))
   //if an error occours pass it to handler
-  .catch(err => res.status(400).json('Error: ' + err))
+  .catch(next)
+  // -PA
 })
 
 // CREATE
 // POST /surveys
-router.post('/books', (req, res, next) => {
+router.post('/admin', (req, res, next) => {
   // require the entire body of the book schema
   const book = req.body.book
   //create using variable book for the body
@@ -59,7 +58,7 @@ router.post('/books', (req, res, next) => {
     .catch(next)
 })
 
-//UPDATE
+//UPDATE - not used
 //PATCH to be used with id
 // router.patch('/books/:id', blanks, (req, res, next) => {
 //
@@ -72,22 +71,38 @@ router.post('/books', (req, res, next) => {
 //   .catch(next)
 // })
 
-router.patch('/books/:id', (req, res, next) => {
+// UPDATE - PATCH changes one entry by id
+router.patch('/admin/:id', (req, res, next) => {
+  //mongoose findByIdAndUpdate selects the id of the instance
+  //and sets by requiring the body of the book
   Book.findByIdAndUpdate(req.params.id, {
     $set: req.body.book
-}) .then(error404)
+})
+//handle the error
+  .then(error404)
   // .then(book => {
   //   return book.updateOne(req.body.book)
-  // })
+  // })\
+  //if successful return status 204
   .then(() => res.sendStatus(204))
+  //if not, catch next
   .catch(next)
+  // PA
 })
 
-//DELETE
-router.delete('/books/:id', (req, res, next) => {
+//DELETE a book by ID
+router.delete('/admin/:id', (req, res, next) => {
+  //uses the variable Book for the book.js Schema
+  //findByIdAndRemove Mongoose
   Book.findByIdAndRemove(req.params.id)
+  //handle errors
   .then(error404)
+  //if successful passes sucess status
   .then(() => res.sendStatus(204))
+  //if not, error
   .catch(next)
+  // PA
 })
+// exports this page
+//Pseudo and file code by PA
 module.exports = router;
